@@ -1,5 +1,5 @@
+require('dotenv').config();
 const connectDB = require('./config/db');
-
 connectDB();
 {
   "name": "goaliq-backend",
