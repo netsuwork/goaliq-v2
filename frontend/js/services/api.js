@@ -1,8 +1,16 @@
-const express = require('express');
-const router = express.Router();
+window.API = {
 
-const matchController = require('../controllers/matchController');
+  baseUrl: 'https://goaliq-v2.onrender.com/api',
 
-router.get('/:id', matchController.getMatch);
+  async get(url){
 
-module.exports = router;
+    const res = await fetch(this.baseUrl + url);
+
+    if(!res.ok){
+      throw new Error('API Error');
+    }
+
+    return res.json();
+  }
+
+};
