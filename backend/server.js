@@ -1,3 +1,6 @@
+const connectDB = require('./config/db');
+
+connectDB();
 {
   "name": "goaliq-backend",
   "version": "1.0.0",
