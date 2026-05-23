@@ -20,4 +20,11 @@ router.get('/:id', async (req, res) => {
 
       score: {
         home: 2,
-        away
+        away: 1
+      }
+    }
+  });
+
+});
+
+module.exports = router;
