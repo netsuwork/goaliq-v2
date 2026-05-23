@@ -1,22 +1,25 @@
 require('dotenv').config();
+
+const express = require('express');
+const cors = require('cors');
+
 const connectDB = require('./config/db');
+
+const app = express();
+
 connectDB();
-{
-  "name": "goaliq-backend",
-  "version": "1.0.0",
-  "main": "server.js",
-  "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js"
-  },
-  "dependencies": {
-    "axios": "^1.6.8",
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.5",
-    "express": "^4.19.2",
-    "mongoose": "^8.3.2"
-  },
-  "devDependencies": {
-    "nodemon": "^3.1.0"
-  }
-}
+
+app.use(cors());
+app.use(express.json());
+
+app.get('/', (req, res) => {
+  res.send('GoalIQ API Running');
+});
+
+app.use('/api/matches', require('./routes/matches'));
+
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
